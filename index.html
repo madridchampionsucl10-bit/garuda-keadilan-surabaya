@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garuda Keadilan Surabaya — Pewaris Juga Perintis</title>
+  <meta name="description" content="Garuda Keadilan Surabaya: Wadah pengembangan karakter dan pengelolaan minat bakat anak-anak kader PKS di Kota Surabaya." />
+
+  <!-- Google Fonts: Instrument Serif & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            gk: {
+              white: '#FFFFFF',
+              maroon: '#380404',
+              black: '#050505',
+            }
+          },
+          fontFamily: {
+            serif: ['"Instrument Serif"', 'Georgia', 'serif'],
+            sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    :root {
+      --gk-white: #FFFFFF;
+      --gk-maroon: #380404;
+      --gk-black: #050505;
+    }
+
+    body {
+      background-color: var(--gk-white);
+      color: var(--gk-black);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Editorial Grid Hairline Borders */
+    .border-ink {
+      border-color: rgba(5, 5, 5, 0.16);
+    }
+
+    .border-ink-strong {
+      border-color: #050505;
+    }
+
+    /* Architectural Constructivist Shadow */
+    .hard-shadow-maroon {
+      box-shadow: 10px 10px 0px #380404;
+    }
+
+    .hard-shadow-black {
+      box-shadow: 10px 10px 0px #050505;
+    }
+
+    /* Subtle Marquee Animation */
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .animate-marquee {
+      display: flex;
+      width: max-content;
+      animation: marquee 28s linear infinite;
+    }
+
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Selection */
+    ::selection {
+      background-color: #380404;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body class="bg-gk-white text-gk-black antialiased">
+
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="sticky top-0 z-50 bg-gk-white/95 backdrop-blur-md border-b border-ink-strong">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 flex items-center justify-between">
+      <!-- Brand Identity -->
+      <a href="#" class="flex items-center gap-3.5 group">
+        <div class="w-10 h-10 bg-gk-maroon text-gk-white flex items-center justify-center font-serif text-2xl tracking-tight border border-gk-black transition-transform duration-300 group-hover:-translate-y-0.5">
+          GK
+        </div>
+        <div class="leading-tight">
+          <span class="block text-sm sm:text-base font-extrabold tracking-tight uppercase text-gk-black">
+            Garuda Keadilan
+          </span>
+          <span class="block text-[11px] font-semibold tracking-[0.22em] uppercase text-gk-maroon">
+            Surabaya
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center gap-8 text-xs font-bold uppercase tracking-[0.15em]">
+        <a href="#tentang" class="hover:text-gk-maroon transition-colors">Profil & Visi</a>
+        <a href="#program" class="hover:text-gk-maroon transition-colors">Program</a>
+        <a href="#struktur" class="hover:text-gk-maroon transition-colors">Struktur</a>
+        <a href="#komitmen" class="hover:text-gk-maroon transition-colors">Alur & Prinsip</a>
+      </nav>
+
+      <!-- CTA & Mobile Trigger -->
+      <div class="flex items-center gap-3">
+        <a href="#kontak" class="hidden sm:inline-flex items-center gap-2 bg-gk-black text-gk-white hover:bg-gk-maroon px-5 py-2.5 text-xs font-bold uppercase tracking-[0.14em] transition-colors duration-300">
+          <span>Hubungi Kami</span>
+          <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+        <button id="menu-btn" aria-label="Buka Menu" class="md:hidden p-2.5 border border-gk-black text-gk-black hover:bg-gk-black hover:text-gk-white transition-colors">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-menu" class="hidden md:hidden bg-gk-white border-b border-gk-black px-5 py-6 space-y-4">
+      <a href="#tentang" class="block text-sm font-bold uppercase tracking-widest py-1.5 border-b border-ink">Profil & Visi</a>
+      <a href="#program" class="block text-sm font-bold uppercase tracking-widest py-1.5 border-b border-ink">Program Unggulan</a>
+      <a href="#struktur" class="block text-sm font-bold uppercase tracking-widest py-1.5 border-b border-ink">Struktur Organisasi</a>
+      <a href="#komitmen" class="block text-sm font-bold uppercase tracking-widest py-1.5 border-b border-ink">Alur & Prinsip</a>
+      <a href="#kontak" class="inline-flex items-center justify-center w-full gap-2 bg-gk-maroon text-gk-white py-3 text-xs font-bold uppercase tracking-widest mt-2">
+        <span>Kunjungi Sekretariat</span>
+        <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+      </a>
+    </div>
+  </header>
+
+  <!-- ==================== HERO SECTION (ASYMMETRIC EDITORIAL) ==================== -->
+  <section class="relative border-b border-gk-black">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12">
+      
+      <!-- Left Editorial Column (7 cols) -->
+      <div class="lg:col-span-7 px-5 sm:px-8 py-14 sm:py-20 lg:py-24 lg:border-r border-gk-black flex flex-col justify-between">
+        <div class="reveal">
+          <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 border border-gk-black text-[11px] font-bold uppercase tracking-[0.2em] mb-8">
+            <span class="w-2 h-2 bg-gk-maroon inline-block"></span>
+            <span>Kota Surabaya • Jawa Timur</span>
+          </div>
+
+          <h1 class="font-serif text-6xl sm:text-7xl xl:text-[5.5rem] leading-[0.96] tracking-tight text-gk-black mb-7">
+            Pewaris <br />
+            <span class="italic text-gk-maroon">Juga Perintis.</span>
+          </h1>
+
+          <p class="text-base sm:text-lg text-gk-black/80 max-w-xl leading-relaxed font-normal mb-10">
+            <strong>Garuda Keadilan Surabaya</strong> adalah ruang tumbuh, pembinaan karakter, serta pengelolaan minat dan bakat anak-anak kader PKS di Kota Pahlawan—menyiapkan generasi yang kokoh berakar pada nilai dan berani merintis karya nyata.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a href="#program" class="inline-flex items-center gap-3 bg-gk-maroon text-gk-white hover:bg-gk-black px-7 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-300">
+              <span>Jelajahi Program</span>
+              <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+            </a>
+            <a href="#struktur" class="inline-flex items-center gap-3 bg-gk-white text-gk-black border border-gk-black hover:bg-gk-black hover:text-gk-white px-7 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-300">
+              <span>Pengurus Inti</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Editorial Bottom Meta Strip -->
+        <div class="grid grid-cols-3 gap-4 pt-12 mt-14 border-t border-ink reveal">
+          <div>
+            <span class="block text-[11px] font-bold uppercase tracking-widest text-gk-maroon">Fokus Utama</span>
+            <span class="text-sm sm:text-base font-bold mt-1 block">Karakter & Bakat</span>
+          </div>
+          <div>
+            <span class="block text-[11px] font-bold uppercase tracking-widest text-gk-maroon">Basis Gerakan</span>
+            <span class="text-sm sm:text-base font-bold mt-1 block">Anak Kader PKS</span>
+          </div>
+          <div>
+            <span class="block text-[11px] font-bold uppercase tracking-widest text-gk-maroon">Markas</span>
+            <span class="text-sm sm:text-base font-bold mt-1 block">Jl. Tales V No. 3</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Constructivist Visual Column (5 cols) -->
+      <div class="lg:col-span-5 bg-gk-black text-gk-white p-6 sm:p-10 lg:p-12 flex flex-col justify-between relative">
+        <div class="reveal">
+          <div class="flex items-center justify-between text-xs uppercase tracking-[0.2em] text-gk-white/70 pb-4 mb-6 border-b border-gk-white/20">
+            <span>Edisi Profil Organisasi</span>
+            <span>SBY — ID</span>
+          </div>
+
+          <!-- Framed Visual Container -->
+          <div class="relative border border-gk-white/30 bg-gk-maroon p-3">
+            <!-- GANTI FOTO DI SINI: Ganti URL src dengan foto kegiatan pemuda/diskusi Garuda Keadilan Surabaya -->
+            <img
+              src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80"
+              alt="Aktivitas Pembinaan Pemuda Garuda Keadilan Surabaya"
+              class="w-full h-72 sm:h-80 object-cover grayscale contrast-125 hover:grayscale-0 transition-all duration-500"
+            />
+            <div class="mt-3 flex items-center justify-between text-[11px] font-semibold uppercase tracking-widest text-gk-white/90 px-1">
+              <span>Ruang Kolaborasi Generasi Muda</span>
+              <span>01 / 04</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Constructivist Manifesto Card -->
+        <div class="mt-8 bg-gk-maroon border border-gk-white/20 p-6 reveal">
+          <div class="flex items-start justify-between gap-4">
+            <p class="font-serif italic text-2xl sm:text-3xl leading-snug text-gk-white">
+              “Mewarisi keteguhan nilai perjuangan, merintis jalan inovasi bagi masa depan Surabaya.”
+            </p>
+            <i data-lucide="compass" class="w-7 h-7 text-gk-white shrink-0 mt-1"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== MARQUEE TICKER ==================== -->
+  <div class="bg-gk-maroon text-gk-white border-b border-gk-black py-3.5 overflow-hidden select-none">
+    <div class="animate-marquee text-xs font-bold uppercase tracking-[0.24em] items-center">
+      <span class="mx-6">GARUDA KEADILAN SURABAYA</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PEWARIS JUGA PERINTIS</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PENGEMBANGAN KARAKTER</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PENGELOLAAN MINAT & BAKAT</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">JL. TALES V NO. 3 SURABAYA</span>
+      <span class="mx-2">•</span>
+      <!-- Duplicate for seamless loop -->
+      <span class="mx-6">GARUDA KEADILAN SURABAYA</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PEWARIS JUGA PERINTIS</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PENGEMBANGAN KARAKTER</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">PENGELOLAAN MINAT & BAKAT</span>
+      <span class="mx-2">•</span>
+      <span class="mx-6">JL. TALES V NO. 3 SURABAYA</span>
+      <span class="mx-2">•</span>
+    </div>
+  </div>
+
+  <!-- ==================== PROFIL, VISI & MISI (EDITORIAL BENTO) ==================== -->
+  <section id="tentang" class="py-20 sm:py-28 border-b border-gk-black">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between pb-10 mb-12 border-b border-gk-black reveal">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-gk-maroon block mb-3">01 — Identitas & Arah Gerak</span>
+          <h2 class="font-serif text-4xl sm:text-6xl leading-none text-gk-black">
+            Tentang Kami, Visi & Misi
+          </h2>
+        </div>
+        <p class="text-sm text-gk-black/75 max-w-md mt-4 md:mt-0">
+          Menjembatani nilai idealisme keluarga kader dengan ruang aktualisasi potensi kreatif, intelektual, dan kepemimpinan muda di Surabaya.
+        </p>
+      </div>
+
+      <!-- Asymmetric Editorial Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Profil Singkat (White Card with Hard Border) -->
+        <div class="lg:col-span-7 border border-gk-black p-8 sm:p-10 bg-gk-white flex flex-col justify-between reveal">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-gk-maroon mb-5">
+              <i data-lucide="shield" class="w-4 h-4"></i>
+              <span>Profil Organisasi</span>
+            </div>
+            <h3 class="font-serif text-3xl sm:text-4xl leading-tight mb-5">
+              Rumah Pembinaan Karakter & Akselerasi Potensi Generasi Penerus
+            </h3>
+            <p class="text-gk-black/80 leading-relaxed mb-4">
+              <strong>Garuda Keadilan Surabaya</strong> hadir sebagai wadah berhimpun dan bertumbuh bagi anak-anak kader PKS di Kota Surabaya. Kami meyakini bahwa setiap anak muda membawa warisan nilai kebaikan sekaligus tanggung jawab untuk merintis kontribusi nyata sesuai zamannya.
+            </p>
+            <p class="text-gk-black/80 leading-relaxed">
+              Melalui pendekatan pembinaan yang terstruktur, hangat, dan adaptif, kami memetakan minat serta bakat setiap anggota—mulai dari kepemimpinan, komunikasi publik, seni-kreatif, hingga kewirausahaan sosial.
+            </p>
+          </div>
+
+          <div class="mt-8 pt-6 border-t border-ink flex flex-wrap items-center justify-between gap-4 text-xs font-bold uppercase tracking-widest">
+            <span>Berbasis Komunitas</span>
+            <span class="text-gk-maroon">•</span>
+            <span>Berorientasi Karya</span>
+            <span class="text-gk-maroon">•</span>
+            <span>Surabaya</span>
+          </div>
+        </div>
+
+        <!-- Visi Block (Deep Oxblood Maroon) -->
+        <div class="lg:col-span-5 bg-gk-maroon text-gk-white border border-gk-black p-8 sm:p-10 flex flex-col justify-between hard-shadow-black reveal">
+          <div>
+            <div class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gk-white/80 mb-6">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+              <span>Visi Utama</span>
+            </div>
+            <blockquote class="font-serif text-3xl sm:text-4xl leading-snug">
+              “Terwujudnya generasi muda kader PKS Surabaya yang berkarakter tangguh, berdaya saing unggul, serta mampu menjadi pewaris nilai dan perintis kebaikan di tengah masyarakat.”
+            </blockquote>
+          </div>
+
+          <div class="mt-10 pt-5 border-t border-gk-white/20 flex items-center justify-between text-xs uppercase tracking-widest text-gk-white/80">
+            <span>Garuda Keadilan Surabaya</span>
+            <span>2026</span>
+          </div>
+        </div>
+
+        <!-- Misi Block (Full Width Black Contrast) -->
+        <div class="lg:col-span-12 bg-gk-black text-gk-white p-8 sm:p-10 border border-gk-black reveal">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-gk-white/75 mb-8">
+            <i data-lucide="target" class="w-4 h-4"></i>
+            <span>Misi Strategis</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="border-t border-gk-white/25 pt-5">
+              <span class="font-serif text-3xl text-gk-white/50 block mb-2">01.</span>
+              <h4 class="font-bold text-lg mb-2">Penanaman Karakter & Jati Diri</h4>
+              <p class="text-sm text-gk-white/75 leading-relaxed">
+                Menyelenggarakan pembinaan karakter yang berintegritas, berakhlak mulia, dan memiliki kepekaan sosial tinggi terhadap persoalan umat dan bangsa.
+              </p>
+            </div>
+
+            <div class="border-t border-gk-white/25 pt-5">
+              <span class="font-serif text-3xl text-gk-white/50 block mb-2">02.</span>
+              <h4 class="font-bold text-lg mb-2">Pemetaan & Inkubasi Minat Bakat</h4>
+              <p class="text-sm text-gk-white/75 leading-relaxed">
+                Mengelola secara sistematis minat dan bakat anak-anak kader melalui ruang latihan, mentoring terarah, serta wadah ekspresi lintas bidang.
+              </p>
+            </div>
+
+            <div class="border-t border-gk-white/25 pt-5">
+              <span class="font-serif text-3xl text-gk-white/50 block mb-2">03.</span>
+              <h4 class="font-bold text-lg mb-2">Kepemimpinan & Kolaborasi Karya</h4>
+              <p class="text-sm text-gk-white/75 leading-relaxed">
+                Mendorong lahirnya inisiatif-inisiatif perintisan di tingkat lokal Surabaya yang mempertemukan solidaritas internal dengan manfaat publik.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== PROGRAM / LAYANAN (NUMBERED EDITORIAL LIST) ==================== -->
+  <section id="program" class="py-20 sm:py-28 border-b border-gk-black bg-gk-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between pb-10 mb-4 border-b border-gk-black reveal">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-gk-maroon block mb-3">02 — Ruang Tumbuh</span>
+          <h2 class="font-serif text-4xl sm:text-6xl leading-none text-gk-black">
+            Program & Pembinaan
+          </h2>
+        </div>
+        <p class="text-sm text-gk-black/75 max-w-md mt-4 md:mt-0">
+          Empat pilar kegiatan utama untuk menempa karakter sekaligus mengasah bakat spesifik anggota di Surabaya.
+        </p>
+      </div>
+
+      <!-- Numbered Interactive Rows -->
+      <div class="divide-y divide-gk-black border-b border-gk-black">
+        
+        <!-- Program 01 -->
+        <div class="group py-8 sm:py-10 px-4 sm:px-6 transition-colors duration-300 hover:bg-gk-maroon hover:text-gk-white reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-2">
+              <span class="font-serif text-5xl sm:text-6xl text-gk-maroon group-hover:text-gk-white transition-colors">01</span>
+            </div>
+            <div class="lg:col-span-4">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] opacity-75 block mb-1">Fondasi Nilai</span>
+              <h3 class="text-2xl font-extrabold tracking-tight">Sekolah Karakter & Kepemimpinan</h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-sm sm:text-base opacity-85 leading-relaxed">
+                Forum pembinaan berkala yang membentuk ketangguhan mental, etika berorganisasi, wawasan kebangsaan, dan kesiapan menjadi pemimpin muda yang amanah.
+              </p>
+            </div>
+            <div class="lg:col-span-1 flex lg:justify-end">
+              <span class="w-10 h-10 border border-current flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 02 -->
+        <div class="group py-8 sm:py-10 px-4 sm:px-6 transition-colors duration-300 hover:bg-gk-maroon hover:text-gk-white reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-2">
+              <span class="font-serif text-5xl sm:text-6xl text-gk-maroon group-hover:text-gk-white transition-colors">02</span>
+            </div>
+            <div class="lg:col-span-4">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] opacity-75 block mb-1">Pemetaan Potensi</span>
+              <h3 class="text-2xl font-extrabold tracking-tight">Klinik Minat & Inkubasi Bakat</h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-sm sm:text-base opacity-85 leading-relaxed">
+                Pendataan dan pendampingan klaster bakat—meliputi olahraga, seni-desain, public speaking, literasi, hingga teknologi—bersama mentor berpengalaman.
+              </p>
+            </div>
+            <div class="lg:col-span-1 flex lg:justify-end">
+              <span class="w-10 h-10 border border-current flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 03 -->
+        <div class="group py-8 sm:py-10 px-4 sm:px-6 transition-colors duration-300 hover:bg-gk-maroon hover:text-gk-white reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-2">
+              <span class="font-serif text-5xl sm:text-6xl text-gk-maroon group-hover:text-gk-white transition-colors">03</span>
+            </div>
+            <div class="lg:col-span-4">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] opacity-75 block mb-1">Kreativitas & Media</span>
+              <h3 class="text-2xl font-extrabold tracking-tight">Studio Komunikasi & Produksi Kreatif</h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-sm sm:text-base opacity-85 leading-relaxed">
+                Ruang produksi konten, kampanye gagasan positif, jurnalistik warga, dan penguatan narasi digital yang digerakkan langsung oleh talenta muda Surabaya.
+              </p>
+            </div>
+            <div class="lg:col-span-1 flex lg:justify-end">
+              <span class="w-10 h-10 border border-current flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Program 04 -->
+        <div class="group py-8 sm:py-10 px-4 sm:px-6 transition-colors duration-300 hover:bg-gk-maroon hover:text-gk-white reveal">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            <div class="lg:col-span-2">
+              <span class="font-serif text-5xl sm:text-6xl text-gk-maroon group-hover:text-gk-white transition-colors">04</span>
+            </div>
+            <div class="lg:col-span-4">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] opacity-75 block mb-1">Aksi Perintisan</span>
+              <h3 class="text-2xl font-extrabold tracking-tight">Aksi Sosial & Pengabdian Kota</h3>
+            </div>
+            <div class="lg:col-span-5">
+              <p class="text-sm sm:text-base opacity-85 leading-relaxed">
+                Penerjunan langsung dalam kegiatan bakti masyarakat, gerakan kepedulian lingkungan, dan kolaborasi kepemudaan lintas kecamatan di Kota Surabaya.
+              </p>
+            </div>
+            <div class="lg:col-span-1 flex lg:justify-end">
+              <span class="w-10 h-10 border border-current flex items-center justify-center transition-transform duration-300 group-hover:translate-x-1">
+                <i data-lucide="arrow-right" class="w-4 h-4"></i>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== STRUKTUR ORGANISASI ==================== -->
+  <section id="struktur" class="py-20 sm:py-28 border-b border-gk-black bg-gk-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left Sticky Editorial Title (4 cols) -->
+        <div class="lg:col-span-4 lg:sticky lg:top-28 reveal">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-gk-maroon block mb-3">03 — Kepengurusan</span>
+          <h2 class="font-serif text-4xl sm:text-5xl leading-tight text-gk-black mb-5">
+            Struktur Pengurus Inti
+          </h2>
+          <p class="text-sm text-gk-black/75 leading-relaxed mb-8">
+            Barisan penggerak yang mengoordinasikan tata kelola organisasi, pembinaan anggota, serta komunikasi publik Garuda Keadilan Surabaya.
+          </p>
+
+          <div class="border border-gk-black p-4 bg-gk-white">
+            <!-- GANTI FOTO DI SINI: Foto tim pengurus inti Garuda Keadilan Surabaya -->
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80"
+              alt="Kolaborasi Tim Pengurus Garuda Keadilan Surabaya"
+              class="w-full h-48 object-cover grayscale contrast-125"
+            />
+            <p class="text-[11px] font-bold uppercase tracking-widest mt-3 text-gk-maroon">
+              Sinergi & Tata Kelola Organisasi
+            </p>
+          </div>
+        </div>
+
+        <!-- Right Organizational Roster (8 cols) -->
+        <div class="lg:col-span-8 space-y-5">
+          
+          <!-- 1. Ketua Umum (Featured Maroon Block) -->
+          <div class="bg-gk-maroon text-gk-white border border-gk-black p-7 sm:p-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4 hard-shadow-black reveal">
+            <div>
+              <span class="inline-block text-[11px] font-bold uppercase tracking-[0.22em] bg-gk-black text-gk-white px-3 py-1 mb-3">
+                01 • Ketua Umum
+              </span>
+              <h3 class="font-serif text-3xl sm:text-4xl tracking-tight">
+                Muhammad Fateh Farhat
+              </h3>
+            </div>
+            <div class="w-12 h-12 border border-gk-white/30 flex items-center justify-center shrink-0">
+              <i data-lucide="crown" class="w-5 h-5 text-gk-white"></i>
+            </div>
+          </div>
+
+          <!-- 2 & 3 Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- Sekretaris Umum -->
+            <div class="border border-gk-black p-7 bg-gk-white hover:bg-gk-black hover:text-gk-white transition-colors duration-300 group reveal">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-maroon group-hover:text-gk-white/80">
+                  02 • Sekretaris Umum
+                </span>
+                <i data-lucide="file-text" class="w-4 h-4 opacity-70"></i>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl leading-snug">
+                Salwa Rizmi Azizah
+              </h3>
+            </div>
+
+            <!-- Bendahara Umum -->
+            <div class="border border-gk-black p-7 bg-gk-white hover:bg-gk-black hover:text-gk-white transition-colors duration-300 group reveal">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-maroon group-hover:text-gk-white/80">
+                  03 • Bendahara Umum
+                </span>
+                <i data-lucide="wallet" class="w-4 h-4 opacity-70"></i>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl leading-snug">
+                Muhammad Hanif Abdullah
+              </h3>
+            </div>
+          </div>
+
+          <!-- 4 & 5 Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <!-- MATAKU -->
+            <div class="border border-gk-black p-7 bg-gk-white hover:bg-gk-black hover:text-gk-white transition-colors duration-300 group reveal">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-maroon group-hover:text-gk-white/80">
+                  04 • MATAKU
+                </span>
+                <i data-lucide="sparkles" class="w-4 h-4 opacity-70"></i>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl leading-snug">
+                Hasan Hanzallah
+              </h3>
+              <p class="text-xs opacity-70 mt-2">Minat, Bakat & Pengembangan Potensi</p>
+            </div>
+
+            <!-- MARKOMPRO -->
+            <div class="border border-gk-black p-7 bg-gk-white hover:bg-gk-black hover:text-gk-white transition-colors duration-300 group reveal">
+              <div class="flex items-center justify-between mb-6">
+                <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-maroon group-hover:text-gk-white/80">
+                  05 • MARKOMPRO
+                </span>
+                <i data-lucide="megaphone" class="w-4 h-4 opacity-70"></i>
+              </div>
+              <h3 class="font-serif text-2xl sm:text-3xl leading-snug">
+                Ahmad Raihan Fadhillah Yasin
+              </h3>
+              <p class="text-xs opacity-70 mt-2">Marketing, Komunikasi & Propaganda</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ALUR & KOMITMEN ==================== -->
+  <section id="komitmen" class="py-20 sm:py-28 border-b border-gk-black bg-gk-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8">
+      
+      <div class="max-w-2xl mb-14 reveal">
+        <span class="text-xs font-bold uppercase tracking-[0.22em] text-gk-maroon block mb-3">04 — Alur Pembinaan</span>
+        <h2 class="font-serif text-4xl sm:text-6xl leading-none text-gk-black">
+          Bagaimana Kami Membina & Merintis
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 border border-gk-black divide-y md:divide-y-0 md:divide-x divide-gk-black">
+        
+        <!-- Step 1 -->
+        <div class="p-7 sm:p-8 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-gk-black text-gk-white">Tahap 01</span>
+              <i data-lucide="user-plus" class="w-5 h-5 text-gk-maroon"></i>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">Penjaringan & Pemetaan</h3>
+            <p class="text-sm text-gk-black/75 leading-relaxed">
+              Mengenali latar belakang, karakter dasar, serta kecenderungan minat dan bakat setiap anak kader PKS di Surabaya.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-ink text-[11px] font-bold uppercase tracking-widest text-gk-maroon">
+            Identifikasi Awal
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="p-7 sm:p-8 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-gk-black text-gk-white">Tahap 02</span>
+              <i data-lucide="book-open" class="w-5 h-5 text-gk-maroon"></i>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">Tempaan Karakter</h3>
+            <p class="text-sm text-gk-black/75 leading-relaxed">
+              Penguatan nilai keislaman, kedisiplinan, adab berorganisasi, dan solidaritas antargenerasi sebagai fondasi pewaris.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-ink text-[11px] font-bold uppercase tracking-widest text-gk-maroon">
+            Pengokohan Nilai
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="p-7 sm:p-8 flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-gk-black text-gk-white">Tahap 03</span>
+              <i data-lucide="layers" class="w-5 h-5 text-gk-maroon"></i>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">Pengelolaan Bakat</h3>
+            <p class="text-sm text-gk-black/75 leading-relaxed">
+              Penyaluran ke dalam kelompok minat spesifik, pelatihan keterampilan praktis, dan pendampingan proyek kolaboratif.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-ink text-[11px] font-bold uppercase tracking-widest text-gk-maroon">
+            Akselerasi Potensi
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="p-7 sm:p-8 bg-gk-maroon text-gk-white flex flex-col justify-between reveal">
+          <div>
+            <div class="flex items-center justify-between mb-8">
+              <span class="text-xs font-extrabold uppercase tracking-widest px-2.5 py-1 bg-gk-white text-gk-black">Tahap 04</span>
+              <i data-lucide="flag" class="w-5 h-5 text-gk-white"></i>
+            </div>
+            <h3 class="text-xl font-extrabold mb-3">Perintisan Karya</h3>
+            <p class="text-sm text-gk-white/85 leading-relaxed">
+              Melahirkan pelopor muda yang siap berkontribusi nyata di ruang publik, kampus, komunitas, dan masyarakat Surabaya.
+            </p>
+          </div>
+          <div class="mt-8 pt-4 border-t border-gk-white/25 text-[11px] font-bold uppercase tracking-widest">
+            Dampak Nyata
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== KONTAK & FOOTER ==================== -->
+  <footer id="kontak" class="bg-gk-black text-gk-white">
+    <div class="max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-24">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-16 border-b border-gk-white/20">
+        
+        <!-- Left Callout -->
+        <div class="lg:col-span-7 reveal">
+          <span class="text-xs font-bold uppercase tracking-[0.22em] text-gk-white/60 block mb-4">
+            05 — Sekretariat & Kolaborasi
+          </span>
+          <h2 class="font-serif text-5xl sm:text-6xl leading-[1.02] mb-6">
+            Mari Bertumbuh Bersama <span class="italic">Garuda Keadilan Surabaya.</span>
+          </h2>
+          <p class="text-gk-white/75 max-w-xl leading-relaxed mb-8">
+            Terbuka untuk koordinasi pembinaan anak-anak kader, sinergi program minat bakat, maupun kolaborasi kegiatan kepemudaan di Kota Surabaya.
+          </p>
+
+          <div class="flex flex-wrap gap-4">
+            <!-- GANTI NOMOR WA DI SINI -->
+            <a href="https://wa.me/6280000000000?text=Assalamu'alaikum%20Garuda%20Keadilan%20Surabaya" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 bg-gk-maroon text-gk-white border border-gk-white/25 hover:bg-gk-white hover:text-gk-black px-7 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-300">
+              <i data-lucide="message-square" class="w-4 h-4"></i>
+              <span>Hubungi via WhatsApp</span>
+            </a>
+            <a href="https://maps.google.com/?q=Jl.+Tales+V+No.+3,+Surabaya" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-3 border border-gk-white/40 text-gk-white hover:border-gk-white px-7 py-4 text-xs font-bold uppercase tracking-[0.16em] transition-colors duration-300">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>Buka Peta Lokasi</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Contact Info Box -->
+        <div class="lg:col-span-5 bg-gk-maroon border border-gk-white/20 p-8 sm:p-10 flex flex-col justify-between reveal">
+          <div class="space-y-6">
+            <div>
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-white/70 block mb-1.5">Alamat Sekretariat</span>
+              <p class="text-lg font-bold leading-snug">
+                Jl. Tales V No. 3, Kota Surabaya, Jawa Timur
+              </p>
+            </div>
+
+            <div class="border-t border-gk-white/20 pt-5">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-white/70 block mb-1.5">Bidang Gerak</span>
+              <p class="text-sm text-gk-white/90">
+                Pengembangan Karakter & Pengelolaan Minat Bakat Anak-Anak Kader PKS
+              </p>
+            </div>
+
+            <div class="border-t border-gk-white/20 pt-5">
+              <span class="text-[11px] font-bold uppercase tracking-[0.2em] text-gk-white/70 block mb-2">Kanal Resmi</span>
+              <div class="flex items-center gap-3">
+                <!-- GANTI TAUTAN MEDIA SOSIAL DI SINI -->
+                <a href="#" aria-label="Instagram Garuda Keadilan Surabaya" class="w-10 h-10 border border-gk-white/30 flex items-center justify-center hover:bg-gk-white hover:text-gk-black transition-colors">
+                  <i data-lucide="instagram" class="w-4 h-4"></i>
+                </a>
+                <a href="mailto:garudakeadilansurabaya@example.com" aria-label="Email Garuda Keadilan Surabaya" class="w-10 h-10 border border-gk-white/30 flex items-center justify-center hover:bg-gk-white hover:text-gk-black transition-colors">
+                  <i data-lucide="mail" class="w-4 h-4"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Copyright Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gk-white/60">
+        <p>© 2026 Garuda Keadilan Surabaya. Seluruh Hak Cipta Dilindungi.</p>
+        <p class="font-bold uppercase tracking-[0.2em] text-gk-white">Pewaris Juga Perintis</p>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- ==================== JAVASCRIPT ==================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    // Scroll Reveal using IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  </script>
+</body>
+</html>
